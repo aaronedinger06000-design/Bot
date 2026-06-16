@@ -37,8 +37,6 @@ const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.GuildMembers,       // Privileged — à activer sur le portail
-    GatewayIntentBits.MessageContent,     // Privileged — à activer sur le portail
   ],
 });
 
