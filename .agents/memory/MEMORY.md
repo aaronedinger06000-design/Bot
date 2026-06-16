@@ -1,0 +1,1 @@
+- [Discord bot 24/7 deployment in pnpm workspace](discord-bot-deployment.md) — bot must be a deployable artifact + Reserved VM; not autoscale.

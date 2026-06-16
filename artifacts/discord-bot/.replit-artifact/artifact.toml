@@ -1,0 +1,26 @@
+kind = "api"
+previewPath = "/bot"
+title = "Bot Discord Révolution RP"
+version = "1.0.0"
+id = "1dMOp40g9Y9jO3Vqkbw0H"
+
+[[services]]
+localPort = 8082
+name = "Discord Bot"
+paths = ["/bot"]
+
+[services.env]
+PORT = "8082"
+
+[services.development]
+run = "pnpm --filter @workspace/discord-bot run start"
+
+[services.production.run]
+args = ["node", "artifacts/discord-bot/src/index.mjs"]
+
+[services.production.run.env]
+PORT = "8082"
+NODE_ENV = "production"
+
+[services.production.health.startup]
+path = "/bot"
