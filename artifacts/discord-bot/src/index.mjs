@@ -37,6 +37,8 @@ const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMembers,       // Privileged — anti-join / anti-bot
+    GatewayIntentBits.MessageContent,     // Privileged — anti-spam (contenu)
   ],
 });
 
