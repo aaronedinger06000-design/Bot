@@ -59,14 +59,17 @@ const BASE_PERMS = [
   CreateInstantInvite,
 ];
 
-// ─── HIÉRARCHIE STAFF ────────────────────────────────────────────
+// ─── HIÉRARCHIE STAFF (du plus haut au plus bas) ─────────────────
+// Owner › Fondateur › Co-Fondateur › Responsable RH › Responsable Staff
+// › Responsable Admin › Responsable Modérateur › Super Administrateur
+// › Administrateur › Super Modérateur › Modérateur › Helper › Staff Événementiel
 export const STAFF_ROLES = [
   {
     name: "Owner",
     color: "#FF0000",
     hoist: true,
     mentionable: false,
-    position: 110,
+    position: 120,
     permissions: [Administrator],
     description: "Propriétaire absolu du serveur",
   },
@@ -75,7 +78,7 @@ export const STAFF_ROLES = [
     color: "#FF2200",
     hoist: true,
     mentionable: false,
-    position: 109,
+    position: 119,
     permissions: [Administrator],
     description: "Fondateur du serveur Révolution RP",
   },
@@ -84,7 +87,7 @@ export const STAFF_ROLES = [
     color: "#FF4400",
     hoist: true,
     mentionable: false,
-    position: 108,
+    position: 118,
     permissions: [
       ManageGuild, ManageChannels, ManageRoles, ManageMessages,
       ManageNicknames, ManageWebhooks, ManageEvents, ManageThreads,
@@ -95,26 +98,26 @@ export const STAFF_ROLES = [
     description: "Co-fondateur du serveur",
   },
   {
-    name: "Super Administrateur",
+    name: "Responsable RH",
     color: "#FF6600",
     hoist: true,
     mentionable: true,
-    position: 107,
+    position: 117,
     permissions: [
       ManageGuild, ManageChannels, ManageRoles, ManageMessages,
       ManageNicknames, ManageWebhooks, ManageEvents, ManageThreads,
       KickMembers, BanMembers, ModerateMembers, ViewAuditLog,
       MuteMembers, DeafenMembers, MoveMembers, MentionEveryone,
-      ViewGuildInsights, PrioritySpeaker, ...BASE_PERMS,
+      ViewGuildInsights, ...BASE_PERMS,
     ],
-    description: "Super Administrateur — gestion complète du serveur",
+    description: "Responsable des Ressources Humaines",
   },
   {
-    name: "Administrateur",
+    name: "Responsable Staff",
     color: "#FF8800",
     hoist: true,
     mentionable: true,
-    position: 106,
+    position: 116,
     permissions: [
       ManageGuild, ManageChannels, ManageRoles, ManageMessages,
       ManageNicknames, ManageWebhooks, ManageEvents, ManageThreads,
@@ -122,29 +125,73 @@ export const STAFF_ROLES = [
       MuteMembers, DeafenMembers, MoveMembers, MentionEveryone,
       ...BASE_PERMS,
     ],
-    description: "Administrateur — gestion avancée",
+    description: "Responsable de l'ensemble de l'équipe staff",
   },
   {
-    name: "Responsable Administrateur",
+    name: "Responsable Admin",
     color: "#FFAA00",
     hoist: true,
     mentionable: true,
-    position: 105,
+    position: 115,
     permissions: [
-      ManageChannels, ManageMessages, ManageNicknames,
-      ManageThreads, ManageEvents,
+      ManageChannels, ManageRoles, ManageMessages,
+      ManageNicknames, ManageWebhooks, ManageEvents, ManageThreads,
+      KickMembers, BanMembers, ModerateMembers, ViewAuditLog,
+      MuteMembers, DeafenMembers, MoveMembers, MentionEveryone,
+      ...BASE_PERMS,
+    ],
+    description: "Responsable de l'équipe administration",
+  },
+  {
+    name: "Responsable Modérateur",
+    color: "#FFCC00",
+    hoist: true,
+    mentionable: true,
+    position: 114,
+    permissions: [
+      ManageChannels, ManageMessages, ManageNicknames, ManageThreads,
+      KickMembers, BanMembers, ModerateMembers, ViewAuditLog,
+      MuteMembers, DeafenMembers, MoveMembers, MentionEveryone,
+      ...BASE_PERMS,
+    ],
+    description: "Responsable de l'équipe modération",
+  },
+  {
+    name: "Super Administrateur",
+    color: "#FFD700",
+    hoist: true,
+    mentionable: true,
+    position: 113,
+    permissions: [
+      ManageChannels, ManageRoles, ManageMessages,
+      ManageNicknames, ManageEvents, ManageThreads,
       KickMembers, BanMembers, ModerateMembers, ViewAuditLog,
       MuteMembers, DeafenMembers, MoveMembers,
       ...BASE_PERMS,
     ],
-    description: "Responsable de l'équipe d'administration",
+    description: "Super Administrateur — gestion avancée",
+  },
+  {
+    name: "Administrateur",
+    color: "#90EE90",
+    hoist: true,
+    mentionable: true,
+    position: 112,
+    permissions: [
+      ManageChannels, ManageMessages, ManageNicknames,
+      ManageEvents, ManageThreads,
+      KickMembers, BanMembers, ModerateMembers, ViewAuditLog,
+      MuteMembers, DeafenMembers, MoveMembers,
+      ...BASE_PERMS,
+    ],
+    description: "Administrateur — gestion du serveur",
   },
   {
     name: "Super Modérateur",
-    color: "#FFCC00",
+    color: "#00CED1",
     hoist: true,
     mentionable: true,
-    position: 104,
+    position: 111,
     permissions: [
       ManageMessages, ManageNicknames, ManageThreads,
       KickMembers, ModerateMembers, ViewAuditLog,
@@ -155,10 +202,10 @@ export const STAFF_ROLES = [
   },
   {
     name: "Modérateur",
-    color: "#FFD700",
+    color: "#3498DB",
     hoist: true,
     mentionable: true,
-    position: 103,
+    position: 110,
     permissions: [
       ManageMessages, ManageNicknames, ManageThreads,
       KickMembers, ModerateMembers, ViewAuditLog,
@@ -168,27 +215,14 @@ export const STAFF_ROLES = [
     description: "Modérateur — modération standard",
   },
   {
-    name: "Responsable Staff",
-    color: "#90EE90",
-    hoist: true,
-    mentionable: true,
-    position: 102,
-    permissions: [
-      ManageMessages, ManageNicknames, ManageThreads,
-      ModerateMembers, ViewAuditLog, MoveMembers,
-      ...BASE_PERMS,
-    ],
-    description: "Responsable de l'équipe staff",
-  },
-  {
     name: "Helper",
-    color: "#00CED1",
+    color: "#1ABC9C",
     hoist: true,
     mentionable: true,
-    position: 101,
+    position: 109,
     permissions: [
       ManageMessages, ManageThreads,
-      ViewAuditLog, ModerateMembers,
+      ModerateMembers, ViewAuditLog,
       ...BASE_PERMS,
     ],
     description: "Helper — aide aux membres",
@@ -198,24 +232,12 @@ export const STAFF_ROLES = [
     color: "#DA70D6",
     hoist: false,
     mentionable: true,
-    position: 100,
+    position: 108,
     permissions: [
       ManageEvents, ManageMessages, MoveMembers,
       ...BASE_PERMS,
     ],
-    description: "Organisateur d'événements",
-  },
-  {
-    name: "Responsable RH",
-    color: "#BA55D3",
-    hoist: false,
-    mentionable: true,
-    position: 99,
-    permissions: [
-      ManageMessages, ManageNicknames, ViewAuditLog,
-      ...BASE_PERMS,
-    ],
-    description: "Ressources humaines du staff",
+    description: "Organisateur d'événements RP",
   },
 ];
 
@@ -234,9 +256,13 @@ export const ALL_ROLES = [...STAFF_ROLES, ...CIVIL_ROLES];
 
 // ─── STAFF NAMES (pour les permissions) ──────────────────────────
 export const ALL_STAFF_NAMES = STAFF_ROLES.map((r) => r.name);
-export const SENIOR_STAFF = ["Owner", "Fondateur", "Co-Fondateur", "Super Administrateur", "Administrateur"];
-export const MID_STAFF = [...SENIOR_STAFF, "Responsable Administrateur", "Super Modérateur", "Modérateur"];
-export const ALL_STAFF = [...MID_STAFF, "Responsable Staff", "Helper", "Staff Événementiel", "Responsable RH"];
+
+// Hiérarchie : Owner › Fondateur › Co-Fondateur › Responsable RH › Responsable Staff
+// › Responsable Admin › Responsable Modérateur › Super Administrateur
+// › Administrateur › Super Modérateur › Modérateur › Helper › Staff Événementiel
+export const SENIOR_STAFF = ["Owner", "Fondateur", "Co-Fondateur", "Responsable RH", "Responsable Staff"];
+export const MID_STAFF = [...SENIOR_STAFF, "Responsable Admin", "Responsable Modérateur", "Super Administrateur", "Administrateur", "Super Modérateur", "Modérateur"];
+export const ALL_STAFF = [...MID_STAFF, "Helper", "Staff Événementiel"];
 
 // ─── SERVEUR PRINCIPAL : RÉVOLUTION RP ───────────────────────────
 export const MAIN_SERVER_CONFIG = {
@@ -355,7 +381,7 @@ export const MAIN_SERVER_CONFIG = {
     {
       name: "🔴 ┃ ADMINISTRATION",
       private: true,
-      privateRoles: ["Owner", "Fondateur", "Co-Fondateur", "Super Administrateur", "Administrateur", "Responsable Administrateur"],
+      privateRoles: ["Owner", "Fondateur", "Co-Fondateur", "Responsable RH", "Responsable Staff", "Responsable Admin", "Responsable Modérateur", "Super Administrateur", "Administrateur"],
       channels: [
         { name: "💬┃admin-chat", type: "text", topic: "Chat interne administrateurs." },
         { name: "📋┃admin-tâches", type: "text", topic: "Tâches en cours côté admin." },
@@ -404,7 +430,7 @@ export const MAIN_SERVER_CONFIG = {
     {
       name: "👥 ┃ RESSOURCES HUMAINES",
       private: true,
-      privateRoles: ["Owner", "Fondateur", "Co-Fondateur", "Super Administrateur", "Administrateur", "Responsable Administrateur", "Responsable RH"],
+      privateRoles: ["Owner", "Fondateur", "Co-Fondateur", "Responsable RH", "Responsable Staff"],
       channels: [
         { name: "📝┃candidatures-reçues", type: "text", topic: "Candidatures reçues." },
         { name: "✅┃candidatures-acceptées", type: "text", topic: "Candidatures acceptées." },
