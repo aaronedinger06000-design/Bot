@@ -1,5 +1,5 @@
 kind = "api"
-previewPath = "/bot"
+previewPath = "/"
 title = "Bot Discord Révolution RP"
 version = "1.0.0"
 id = "1dMOp40g9Y9jO3Vqkbw0H"
@@ -7,7 +7,7 @@ id = "1dMOp40g9Y9jO3Vqkbw0H"
 [[services]]
 localPort = 8082
 name = "Discord Bot"
-paths = ["/bot"]
+paths = ["/"]
 
 [services.env]
 PORT = "8082"
@@ -23,4 +23,4 @@ PORT = "8082"
 NODE_ENV = "production"
 
 [services.production.health.startup]
-path = "/bot"
+path = "/"
