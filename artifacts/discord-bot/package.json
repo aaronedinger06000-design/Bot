@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "node --watch src/index.mjs",
     "start": "node src/index.mjs",
-    "build": "node build.mjs",
     "register": "node src/register.mjs"
   },
   "dependencies": {
